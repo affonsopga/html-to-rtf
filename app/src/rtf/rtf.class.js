@@ -3,11 +3,11 @@ const Style           = require('../style/style.class');
 const AllowedHtmlTags = require('../allowed-html-tags/allowed-html-tags.class');
 const Table           = require('../table/table.class');
 const MyString        = require('../string/my-string.class');
-const juice 		  = require('juice');
+const juice 		      = require('juice');
 const charset         = require('./charset.module');
 
 class Rtf {
-  constructor() {
+  constructor() { 
         this.rtfHeaderOpening = '{\\rtf1\\ansi\\ansicpg1252\\deff0\\nouicompat{\\fonttbl{\\f0\\fnil\\fcharset0 Arial;}{\\f1\\fnil\\fcharset0 Arial Black;}{\\f2\\fnil\\fcharset0 Courier New;}{\\f3\\fnil\\fcharset0 Georgia;}{\\f4\\fnil\\fcharset0 Tahoma;}{\\f5\\fnil\\fcharset0 Times New Roman;}{\\f6\\fnil\\fcharset0 Verdana;}}';
     this.rtfHeaderContent = '';
         this.rtfClosing = '}';
@@ -78,11 +78,11 @@ class Rtf {
             }
 
             if (parentTag.name.toLowerCase() == 'tr') {
-                this.addReferenceTagInRtfCode(this.Table.buildCellsLengthOfEachColumn());
+        this.addReferenceTagInRtfCode(this.Table.buildCellsLengthOfEachColumn());
             }
 
             if (parentTag.name.toLowerCase() == 'mark') {
-                this.setHighlightInRtf();
+        this.setHighlightInRtf();
             }
             if (parentTag.name.toLowerCase() == 'a') {
                 this.setHrefInRtf(parentTag);
@@ -91,18 +91,18 @@ class Rtf {
 
             (parentTag.children).forEach((child, index) => {
                 if (child.type != 'text') {
-                    this.readAllChildsInTag(child);
+          this.readAllChildsInTag(child);
                 } else {
-                    this.addContentOfTagInRtfCode(child.data);
+          this.addContentOfTagInRtfCode(child.data);
                 }
-            });
-        }
+      });
+    }
 
         if (parentTag.name.toLowerCase() == 'a') {
             this.setCloseLinkFrameInRtf();
         }
         this.addClosingFatherTagInRtfCode(parentTag.name);
-    }
+  }
   getAmountOfColumnThroughOfFirstChildOfTbodyTag(tableChildren) {
     let count = 0;
     let tbodyIndex = tableChildren.findIndex(value => value.name == 'tbody');
@@ -111,7 +111,7 @@ class Rtf {
       if(tableChildren[tbodyIndex].children[i].type != 'text') {
         (tableChildren[tbodyIndex].children[i].children).forEach((child, index) => {
                     if (child.type != 'text') {
-            count++;
+            count++;          
                     }
         });
 
@@ -129,7 +129,7 @@ class Rtf {
 
         if (attributes.align != undefined) {
       this.addReferenceTagInRtfCode(Style.getRtfAlignmentReference(attributes.align));
-    }
+  }
     if(attributes.src != undefined) {
       this.addReferenceTagInRtfCode(Style.getRtfSourceReference(attributes.src));
   }
@@ -156,7 +156,7 @@ class Rtf {
         content = MyString
             .removeCharacterOfEscapeInAllString(content, '\n\t')
             .trim();
-
+   
         if (content != undefined && !MyString.hasOnlyWhiteSpace(content)) {
             this.rtfContentReferences.push({
                 content: ` ${content}`,
@@ -188,7 +188,7 @@ class Rtf {
 
   clearCacheContent() {
     this.rtfHeaderContent = '';
-    this.rtfContentReferences = [];
+    this.rtfContentReferences = [];    
   }
 }
 
