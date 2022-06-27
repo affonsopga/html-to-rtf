@@ -19,8 +19,8 @@ class Sources {
       const width = attributes.width;
       const height = attributes.height;
 
-      let sizeStyle = width > 0 ? '\\picwgoal' + width : '';
-      sizeStyle += height > 0 ? '\\pichgoal' + height : '';
+      let sizeStyle = width > 0 ? '\\picwgoal' + width * 15 : '';
+      sizeStyle += height > 0 ? '\\pichgoal' + height * 15 : '';
       
       let buffer, imgType;
       if(src.includes('http')) {

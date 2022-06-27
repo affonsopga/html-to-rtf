@@ -1,5 +1,5 @@
 {
-  "name": "html-to-rtf",
+  "name": "@affonsopga/html-to-rtf",
   "version": "1.0.0",
   "author": {
     "name": "Pedro Affonso Godinho de Alcântara",
@@ -37,10 +37,9 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.27.2",
     "cheerio": "^1.0.0-rc.6",
     "image-type": "^4.1.0",
-    "juice": "^7.0.0",
+    "juice": "^8.0.0",
     "stream": "0.0.2",
     "sync-request": "^6.1.0"
   },
