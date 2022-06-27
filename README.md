@@ -6,21 +6,20 @@
 * Ozires for the base framework. Without him, we would not have this.
 * Heron Silva for several improvements (as font-family support) (heronsilva / html-to-rtf)
 * wodka for making it possible to use in browser (wodka/html-to-rtf).
-* Leon Strauß for image support (MinePlay96/html-to-rtf).
+* Leon Strauß for base64 image support (MinePlay96/html-to-rtf).
 
 If I missed some functionality in other forks, please let me know, or make a PR.
 
 ## Prerequisites
->This project work in the browser (maybe it works on the server side, but this is not the main goal.
+>This project works on server side. 
 
 ## Installation
 ```
-$ npm install html-to-rtf-browser
+$ npm install @affonsopga/html-to-rt
 ```
 ## Getting Started
 ```javascript
-const HtmlToRtfBrowser = require('html-to-rtf-browser');
-var htmlToRtf = new HtmlToRtfBrowser();
+var htmlToRtf = require('@affonsopga/html-to-rtf');
 var html = `
 <h1>Title <span style="color:rgb(255,0,0);">with</span> tag h1<h1>
 <p> start of an image (with width and height defined): </p>
@@ -52,10 +51,6 @@ var html = `
 </div>
 `
 const rtf = htmlToRtf.convertHtmlToRtf(html)
-// from here on, works only on browser
-const blob = new Blob([rtf], {type: "application/rtf;charset=utf-8"});
-const link=window.URL.createObjectURL(blob);
-window.location=link;
 
 ```
 >  Now test in your preferred text editor (wordpad, word, libreoffice, ...).
@@ -63,8 +58,8 @@ window.location=link;
 
 ##### Important:
 #
-> You can't copy the output of terminal or console.
-> Save the output at a file.rtf. See above for an example
+> This package works with url and base64 image source.
+> The width and height of the images MUST NOT be set inside the 'style' attribute.
 
 ### Allowed html tags
 ```html
@@ -78,14 +73,9 @@ window.location=link;
 
 > inside img tag: width and height (px/cm)
 
-## Running the tests
-```
-$ gulp tests
-```
-
 ## Author
 
-> * **antoniolucasnobar**
+> * **affonsopga**
 
 ## License
 This project is licensed under the MIT License
