@@ -15,7 +15,7 @@ If I missed some functionality in other forks, please let me know, or make a PR.
 
 ## Installation
 ```
-$ npm install @affonsopga/html-to-rt
+$ npm install @affonsopga/html-to-rtf
 ```
 ## Getting Started
 ```javascript
